@@ -1,4 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+
+import { onMounted } from 'vue';
+
+
+onMounted(() => {
+
+});
+
+</script>
 
 <template>
   <q-page class="row items-center justify-evenly">
