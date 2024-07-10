@@ -4,13 +4,14 @@ import { computed, ref } from 'vue';
 
 export const useAppStore = defineStore('appStore', () => {
 
-  const theme = ref<string>('light');
-  const getTheme = computed(() => theme.value);
 
-  function changeTheme() {
-    theme.value = theme.value === 'light' ? 'dark' : 'light';
+  const rightDrawerOpen = ref<boolean>(false);
+  const getRightDrawerOpen = computed<boolean>(() => rightDrawerOpen.value);
+
+  function changeRightDrawerOpen() {
+    rightDrawerOpen.value = !rightDrawerOpen.value;
   }
 
 
-  return { theme, getTheme, changeTheme };
+  return { getRightDrawerOpen, changeRightDrawerOpen };
 });
