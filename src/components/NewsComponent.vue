@@ -46,7 +46,8 @@ onMounted(async () => {
         <div class="absolute-bottom custom-caption">
           <div class="text-h2">{{ index.title }}</div>
         </div>
-        <a :href="index.link" class="absolute-top text-body2 text-right text-white q-mr-md q-mt-md" target="_blank">
+        <a :href="index.link" class="custom-link absolute-top text-body2 text-right text-white q-mr-md q-mt-md"
+           target="_blank">
           <q-icon name="mdi-link" size="md" />
           {{ index.source }}
         </a>
@@ -69,5 +70,9 @@ onMounted(async () => {
   color: white
   background-color: rgba(0, 0, 0, .3)
 
+.custom-link
+  background-color: #1D1D1D
+  width: fit-content
+  padding: 5px
 </style>
 
