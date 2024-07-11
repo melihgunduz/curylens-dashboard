@@ -65,12 +65,6 @@ export function newsRequest() {
     url: 'https://openapiv1.coinstats.app/news',
   };
 
-  axios
-    .request(options)
-    .then(function(response) {
-      console.log(response.data);
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
+  return axios.request(options);
+
 }

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getPriceFeeds, stopGetPriceFeeds } from 'src/helpers/pythOracleFunctions';
+import NewsComponent from 'components/NewsComponent.vue';
 
 // watch($useWallet.connected, () => {
 //   if ($useWallet.connected.value) {
@@ -13,12 +13,7 @@ import { getPriceFeeds, stopGetPriceFeeds } from 'src/helpers/pythOracleFunction
 </script>
 
 <template>
-  <q-page class="row items-center justify-evenly">
-
-    <!--    <h1>Index Page</h1>-->
-    <!--    <q-btn label="request" @click="newsRequest()" />-->
-    <!--    <wallet-multi-button :dark="$q.dark.isActive" />-->
-    <q-btn label="get price feeds" @click="getPriceFeeds()" />
-    <q-btn label="stop get price feeds" @click="stopGetPriceFeeds()" />
+  <q-page>
+    <news-component />
   </q-page>
 </template>

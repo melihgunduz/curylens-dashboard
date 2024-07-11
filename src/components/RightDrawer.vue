@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useAppStore } from 'stores/app-store';
+import { WalletMultiButton } from 'solana-wallets-vue';
 
 const appStore = useAppStore();
 
@@ -18,13 +19,8 @@ const appStore = useAppStore();
   >
 
     <q-list>
-      <q-item class="items-center" clickable>
-        <q-item-section avatar class="items-center">
-          <q-icon name="mdi-wallet" size="sm" />
-        </q-item-section>
-        <q-item-section>
-          Connect wallet
-        </q-item-section>
+      <q-item class="items-center justify-center">
+        <wallet-multi-button />
       </q-item>
     </q-list>
     <q-btn :icon="$q.dark.isActive ? 'mdi-white-balance-sunny' : 'mdi-weather-night'"
