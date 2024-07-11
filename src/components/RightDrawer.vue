@@ -9,7 +9,8 @@ const appStore = useAppStore();
   <q-drawer
     v-if="$q.screen.lt.md"
     :breakpoint="400"
-    :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'" :model-value="appStore.getRightDrawerOpen"
+    :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
+    :model-value="appStore.getRightDrawerOpen"
     :width="200"
     bordered
     show-if-above

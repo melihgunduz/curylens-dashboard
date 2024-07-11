@@ -13,6 +13,7 @@
     "build": "quasar build"
   },
   "dependencies": {
+    "@pythnetwork/price-service-client": "^1.9.0",
     "@quasar/extras": "^1.16.4",
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.95.0",
