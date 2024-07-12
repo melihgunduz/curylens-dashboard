@@ -2,12 +2,12 @@
 
 import { WalletMultiButton } from 'solana-wallets-vue';
 import { onMounted } from 'vue';
-import { getDetailedTransactions } from 'src/helpers/transactionsFunctions';
-import { PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey } from '@solana/web3.js';
 import { phantom } from '../secrets/secrets.json';
 
-
 const address = new PublicKey(phantom);
+const connection = new Connection('https://devnet.helius-rpc.com/?api-key=ff4f4598-d6a2-44a1-b611-4d8bed205ed5', 'confirmed');
+
 // async function getTransactions(address: PublicKey, numTx: number) {
 //   const pubKey = new PublicKey(address);
 //   //Find recent transactions
@@ -20,9 +20,11 @@ const address = new PublicKey(phantom);
 // }
 
 onMounted(() => {
-  getDetailedTransactions(address).then((res) => {
-    console.log(res);
-  });
+  connection.onAccountChange(
+    address,
+    (updatedAccountInfo) =>
+      console.log(updatedAccountInfo),
+  );
 });
 
 </script>

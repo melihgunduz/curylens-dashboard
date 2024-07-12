@@ -18,5 +18,5 @@ export async function getDetailedTransactions(address: PublicKey) {
   const signatureList = transactionList.map((transaction) => transaction.signature);
   console.log('signatureList', signatureList);
   return await connection.getParsedTransactions(signatureList, { maxSupportedTransactionVersion: 0 });
-
 }
+
