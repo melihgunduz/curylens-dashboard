@@ -12,17 +12,11 @@ const generalGetOptions = {
 export function coinListRequest() {
   const options = {
     ...generalGetOptions,
-    url: 'https://openapiv1.coinstats.app/coins',
+    url: 'https://openapiv1.coinstats.app/coins?limit=20',
   };
 
-  axios
-    .request(options)
-    .then(function(response) {
-      console.log(response.data);
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
+  return axios.request(options);
+
 }
 
 export function coinChartRequest(coinName: string, period: string) {

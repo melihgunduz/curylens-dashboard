@@ -9,9 +9,11 @@
 //
 // });
 
+import TopCoins from 'components/TopCoins.vue';
 </script>
 
 <template>
   <q-page>
+    <top-coins />
   </q-page>
 </template>
