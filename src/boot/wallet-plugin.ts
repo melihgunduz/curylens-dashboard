@@ -8,7 +8,7 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
 import { WalletStoreProps } from 'solana-wallets-vue/src/types/WalletStoreProps';
 import { WalletError } from '@solana/wallet-adapter-base/src/errors';
-import { walletAlert } from 'src/helpers/walletFunctions';
+import { walletAlert } from 'src/helpers/walletErrors';
 
 // "async" is optional;
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
