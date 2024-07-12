@@ -48,14 +48,7 @@ export function marketValuesRequest() {
     url: 'https://openapiv1.coinstats.app/markets',
   };
 
-  axios
-    .request(options)
-    .then(function(response) {
-      console.log(response.data);
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
+  return axios.request(options);
 }
 
 export function newsRequest() {

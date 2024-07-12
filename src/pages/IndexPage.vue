@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import NewsComponent from 'components/NewsComponent.vue';
 
 // watch($useWallet.connected, () => {
 //   if ($useWallet.connected.value) {
@@ -14,6 +13,5 @@ import NewsComponent from 'components/NewsComponent.vue';
 
 <template>
   <q-page>
-    <news-component />
   </q-page>
 </template>
