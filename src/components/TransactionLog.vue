@@ -1,15 +1,13 @@
 <script lang="ts" setup>
 
 import { WalletMultiButton } from 'solana-wallets-vue';
+import { onMounted } from 'vue';
+import { getDetailedTransactions } from 'src/helpers/transactionsFunctions';
 import { PublicKey } from '@solana/web3.js';
 import { phantom } from '../secrets/secrets.json';
-import { onMounted } from 'vue';
 
 
-// const transactionHistory = ref();
 const address = new PublicKey(phantom);
-
-
 // async function getTransactions(address: PublicKey, numTx: number) {
 //   const pubKey = new PublicKey(address);
 //   //Find recent transactions
@@ -21,9 +19,10 @@ const address = new PublicKey(phantom);
 //   transactionHistory.value = await connection.getParsedTransactions(signatureList, { maxSupportedTransactionVersion: 0 });
 // }
 
-
 onMounted(() => {
-  console.log('mounted');
+  getDetailedTransactions(address).then((res) => {
+    console.log(res);
+  });
 });
 
 </script>
