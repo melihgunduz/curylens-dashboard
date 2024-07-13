@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-card class="marketDataCard" style="height: fit-content">
+  <q-card class="marketDataCard shadow-0" style="height: fit-content">
     <q-card-section>
       <div>Bitcoin dominance: {{ marketData.btcDominance !== 0 ? marketData.btcDominance : 'Loading data...' }}%</div>
     </q-card-section>

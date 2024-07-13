@@ -29,7 +29,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <q-card class="q-ma-md" flat style="background-color: transparent">
+  <q-card class="q-ma-md shadow-0" flat style="background-color: transparent">
     <div class="text-white text-h3">Latest news</div>
     <q-carousel
       v-model="slide"

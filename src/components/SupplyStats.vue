@@ -24,8 +24,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="[$q.screen.lt.md ? 'column q-my-md' : 'column justify-between']">
-    <q-card>
+  <div :class="[$q.screen.lt.md ? 'column q-my-md' : 'row justify-between']">
+    <q-card class="shadow-0">
       <q-card-section class="text-h6">
         <div>Circulating supply (SOL)</div>
       </q-card-section>
@@ -45,7 +45,7 @@ onMounted(() => {
         <div class="q-ml-xs">is circulating</div>
       </q-card-section>
     </q-card>
-    <q-card :class="$q.screen.lt.md ? 'q-mt-md' : ''">
+    <q-card :class="$q.screen.lt.md ? 'q-mt-md shadow-0' : 'q-ml-md shadow-0'">
       <q-card-section class="text-h6">
         <div>Non circulating supply</div>
       </q-card-section>

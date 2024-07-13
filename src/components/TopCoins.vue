@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-card class="q-px-sm" style="width: 300px; height: fit-content">
+  <q-card class="q-px-sm shadow-0" style="width: 300px; height: fit-content">
     <q-item v-for="(coin,key) in coins" :key="key" class="q-pa-xs">
       <q-item-section class="text-bold text-body1 flex inline-block content-center">
         <q-icon size="sm">

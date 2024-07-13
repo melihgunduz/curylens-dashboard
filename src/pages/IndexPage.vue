@@ -19,10 +19,12 @@ import SupplyStats from 'components/SupplyStats.vue';
     <div
       :class="[$q.screen.gt.sm ? 'row justify-evenly' : 'column items-center justify-around']">
       <top-coins />
-      <supply-stats />
       <div class="column justify-between">
-        <market-stats class="vertical-top" />
-        <market-stats class="relative-position vertical-bottom" />
+        <supply-stats />
+        <div :class="[$q.screen.lt.md ? 'column items-center' : 'row justify-between']">
+          <market-stats />
+          <market-stats :class="$q.screen.lt.md ? 'q-mt-md' :''" />
+        </div>
       </div>
     </div>
     <news-component />
