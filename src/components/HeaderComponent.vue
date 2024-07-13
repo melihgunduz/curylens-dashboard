@@ -14,6 +14,8 @@ const appStore = useAppStore();
         Curylens
       </q-toolbar-title>
       <q-btn-group v-if="$q.screen.gt.sm" flat>
+        <q-btn dense flat icon="mdi-home" no-caps @click="$router.push({name:'Home'})" />
+
         <q-btn :icon="$q.dark.isActive ? 'mdi-white-balance-sunny' : 'mdi-weather-night'"
                flat round @click="$q.dark.toggle()" />
       </q-btn-group>

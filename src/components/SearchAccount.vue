@@ -104,6 +104,10 @@ function formatUTCDate(blockTime: any): string {
   return formattedDate.replace(' UTC', ' UTC');
 }
 
+$router.beforeEach(() => {
+  address.value = '';
+});
+
 </script>
 
 <template>
