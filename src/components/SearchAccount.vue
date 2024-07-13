@@ -23,6 +23,7 @@ const accountInfo = ref<AccountInfo<Buffer> | null>(null);
 function searchAddress() {
   transactionHistoryParsed.value = [];
   rows.value = [];
+  overviewStore.setTableRows([]);
   if (address.value !== null && address.value !== '') {
     try {
       appStore.setDataLoading(true);

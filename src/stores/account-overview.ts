@@ -13,10 +13,10 @@ type TableRows = {
 export const useOverviewStore = defineStore('overviewStore', () => {
 
 
-  const tableRows = ref<TableRows>();
+  const tableRows = ref<TableRows | []>();
   const getTableRows = computed(() => tableRows.value ? tableRows.value : null);
 
-  function setTableRows(rows: TableRows) {
+  function setTableRows(rows: TableRows | []) {
     tableRows.value = rows;
   }
 
@@ -28,5 +28,5 @@ export const useOverviewStore = defineStore('overviewStore', () => {
   }
 
 
-  return { getTableRows, getAccountInfo, setTableRows, setAccountInfo };
+  return { tableRows, getTableRows, getAccountInfo, setTableRows, setAccountInfo };
 });

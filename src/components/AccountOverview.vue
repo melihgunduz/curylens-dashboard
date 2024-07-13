@@ -4,14 +4,14 @@ import { onMounted, ref } from 'vue';
 import { AccountInfo } from '@solana/web3.js';
 import { QTableColumn } from 'quasar';
 import { useOverviewStore } from 'stores/account-overview';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const overviewStore = useOverviewStore();
 
 
 const accountInfo = ref<AccountInfo<Buffer> | null>(null);
 const rows: any = ref([]);
-const $route = useRoute();
+const $router = useRouter();
 
 const columns: QTableColumn[] = [
   { name: 'transactionSignature', align: 'left', label: 'Transaction Signature', field: 'transactionSignature' },
@@ -20,6 +20,12 @@ const columns: QTableColumn[] = [
   { name: 'timestamp', label: 'Timestamp', field: 'timestamp', sortable: true, align: 'center' },
   { name: 'result', label: 'Result', field: 'result', align: 'center' },
 ];
+
+$router.beforeEach((to) => {
+  if (to.name === 'Account') {
+    rows.value = overviewStore.getTableRows;
+  }
+});
 
 onMounted(() => {
   accountInfo.value = overviewStore.getAccountInfo;
