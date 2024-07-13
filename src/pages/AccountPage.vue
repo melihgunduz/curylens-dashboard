@@ -21,7 +21,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <q-page>
+  <q-page padding>
     <account-overview v-if="ready" />
   </q-page>
 </template>

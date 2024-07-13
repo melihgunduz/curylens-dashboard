@@ -12,6 +12,13 @@ export const useAppStore = defineStore('appStore', () => {
     rightDrawerOpen.value = !rightDrawerOpen.value;
   }
 
+  const dataLoading = ref<boolean>(false);
+  const getDataLoading = computed(() => dataLoading.value);
 
-  return { getRightDrawerOpen, changeRightDrawerOpen };
+  function setDataLoading(value: boolean) {
+    dataLoading.value = value;
+  }
+
+
+  return { getRightDrawerOpen, getDataLoading, changeRightDrawerOpen, setDataLoading };
 });

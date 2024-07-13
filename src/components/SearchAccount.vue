@@ -6,23 +6,26 @@ import { useRouter } from 'vue-router';
 import { useOverviewStore } from 'stores/account-overview';
 import { AccountInfo, ParsedTransactionWithMeta, PublicKey } from '@solana/web3.js';
 import { getAddressData, getDetailedTransactions } from 'src/helpers/transactionsFunctions';
+import { useAppStore } from 'stores/app-store';
 
 const address = ref('');
 
 const $q = useQuasar();
 const $router = useRouter();
 const overviewStore = useOverviewStore();
+const appStore = useAppStore();
 
 const transactionHistoryParsed = ref<(ParsedTransactionWithMeta | null)[]>([]);
 const rows: any = ref([]);
 
 const accountInfo = ref<AccountInfo<Buffer> | null>(null);
 
-const searchAddress = () => {
+function searchAddress() {
   transactionHistoryParsed.value = [];
   rows.value = [];
   if (address.value !== null && address.value !== '') {
     try {
+      appStore.setDataLoading(true);
       PublicKey.isOnCurve(address.value.toString());
 
       getAddressData(new PublicKey(address.value)).then((val) => {
@@ -42,6 +45,7 @@ const searchAddress = () => {
         });
         overviewStore.setTableRows(rows.value);
         overviewStore.setAccountInfo(accountInfo.value);
+        appStore.setDataLoading(false);
         $router.push({ name: 'Account', params: { accountAddress: address.value } });
       }).catch((err) => {
         console.log(err);
@@ -63,7 +67,7 @@ const searchAddress = () => {
       position: 'bottom',
     });
   }
-};
+}
 
 
 function calculateAge(blockTime: any) {
@@ -112,10 +116,15 @@ $router.beforeEach(() => {
 
 <template>
   <q-card class="q-ma-xl" flat>
-    <q-input v-model="address" :on-clear="() => address = ''" bottom-slots clear-icon="mdi-close" clearable
-             hide-bottom-space
-             hide-hint
-             label="Search for accounts" outlined>
+    <q-input
+      v-model="address"
+      :loading="appStore.getDataLoading" :on-clear="() => address = ''" bottom-slots clear-icon="mdi-close" clearable
+      hide-bottom-space
+      hide-hint
+      label="Search for accounts"
+      outlined
+      @keyup.enter="searchAddress()"
+    >
       <template v-slot:append>
         <q-btn dense flat icon="mdi-magnify" @click="searchAddress()" />
       </template>

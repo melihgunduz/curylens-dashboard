@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <q-page>
+  <q-page padding>
     <h1>index</h1>
   </q-page>
 </template>
