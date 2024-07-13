@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-scroll-area class="q-pa-sm" style="max-width: 300px; height: 500px">
+  <q-card class="q-px-sm" style="width: 300px; height: fit-content">
     <q-item v-for="(coin,key) in coins" :key="key" class="q-pa-xs">
       <q-item-section class="text-bold text-body1 flex inline-block content-center">
         <q-icon size="sm">
@@ -59,7 +59,7 @@ onMounted(() => {
         #{{ coin.rank }}
       </q-item-section>
     </q-item>
-  </q-scroll-area>
+  </q-card>
 </template>
 
 <style scoped>

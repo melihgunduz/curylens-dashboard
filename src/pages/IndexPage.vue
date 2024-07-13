@@ -8,10 +8,23 @@
 //   }
 //
 // });
+import MarketStats from 'components/MarketStats.vue';
+import NewsComponent from 'components/NewsComponent.vue';
+import TopCoins from 'components/TopCoins.vue';
+import SupplyStats from 'components/SupplyStats.vue';
 </script>
 
 <template>
   <q-page padding>
-    <h1>index</h1>
+    <div
+      :class="[$q.screen.gt.sm ? 'row justify-evenly' : 'column items-center justify-around']">
+      <top-coins />
+      <supply-stats />
+      <div class="column justify-between">
+        <market-stats class="vertical-top" />
+        <market-stats class="relative-position vertical-bottom" />
+      </div>
+    </div>
+    <news-component />
   </q-page>
 </template>

@@ -27,7 +27,7 @@ function formatNumberWithUnits(number: number) {
   const order = Math.floor(Math.log10(Math.abs(number)) / 3);
   const unitname = units[order];
   const num = number / Math.pow(10, order * 3);
-  return num.toFixed(1) + ' ' + unitname;
+  return num.toFixed(1) + unitname;
 }
 
 onMounted(() => {
@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-card class="marketDataCard">
+  <q-card class="marketDataCard" style="height: fit-content">
     <q-card-section>
       <div>Bitcoin dominance: {{ marketData.btcDominance !== 0 ? marketData.btcDominance : 'Loading data...' }}%</div>
     </q-card-section>
@@ -50,7 +50,7 @@ onMounted(() => {
       <div>Volume: {{ marketData.volume !== 0 ? formatNumberWithUnits(marketData.volume) : 'Loading data...' }}</div>
     </q-card-section>
     <q-card-section>
-      <div>24h volume change: {{ marketData.volumeChange }}%</div>
+      <div>24h volume change: {{ marketData.volumeChange }}</div>
     </q-card-section>
   </q-card>
 </template>

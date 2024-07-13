@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { newsRequest } from 'src/helpers/coinStatsFunctions';
 import { NewsType } from 'src/helpers/newsType';
 import { useQuasar } from 'quasar';
@@ -10,9 +10,8 @@ const $q = useQuasar();
 
 const slide = ref(0);
 
-onMounted(async () => {
+onBeforeMount(async () => {
   await newsRequest().then(function(response) {
-    console.log('value loaded');
     news.value = response.data.result;
   })
     .catch((error) => {
@@ -30,8 +29,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h3>News component</h3>
-  <div class="q-pa-md">
+  <q-card class="q-ma-md" flat style="background-color: transparent">
+    <div class="text-white text-h3">Latest news</div>
     <q-carousel
       v-model="slide"
       animated
@@ -53,13 +52,13 @@ onMounted(async () => {
         </a>
       </q-carousel-slide>
     </q-carousel>
-    <div class="row justify-center q-mt-xs">
+    <div v-if="$q.screen.gt.sm" class="row justify-center q-mt-xs">
       <q-btn-group>
         <q-btn v-for="(index, key) in news" :key="key" :color="slide === key ? 'amber' : 'grey-7'" :label="key+1"
                @click="(slide = key)" />
       </q-btn-group>
     </div>
-  </div>
+  </q-card>
 </template>
 
 <style lang="sass" scoped>

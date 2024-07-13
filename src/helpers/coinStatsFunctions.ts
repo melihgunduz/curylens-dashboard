@@ -12,7 +12,7 @@ const generalGetOptions = {
 export function coinListRequest() {
   const options = {
     ...generalGetOptions,
-    url: 'https://openapiv1.coinstats.app/coins?limit=20',
+    url: 'https://openapiv1.coinstats.app/coins?limit=10',
   };
 
   return axios.request(options);

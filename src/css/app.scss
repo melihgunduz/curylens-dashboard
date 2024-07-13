@@ -1,1 +1,17 @@
 // app global css in SCSS form
+
+body, #q-app {
+  background: rgb(2, 0, 36);
+  background: -moz-linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(21, 159, 187, 1) 100%);
+  background: -webkit-linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(21, 159, 187, 1) 100%);
+  background: linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(21, 159, 187, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#159fbb", GradientType=1);
+}
+
+body.q-dark {
+  background: rgb(2, 0, 36);
+  background: -moz-linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(21, 159, 187, 1) 100%);
+  background: -webkit-linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(21, 159, 187, 1) 100%);
+  background: linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(21, 159, 187, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#159fbb", GradientType=1);
+}

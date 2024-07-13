@@ -11,9 +11,9 @@ export const useOracleStore = defineStore('oracleStore', () => {
 
   function setStoreConnection() {
     try {
-
+// TODO: This session will be completed
     } catch (e) {
-      
+
     }
     connection.value = new PriceServiceConnection('https://hermes.pyth.network');
 
