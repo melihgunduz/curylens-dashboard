@@ -8,11 +8,10 @@
 //   }
 //
 // });
-import TransactionLog from 'components/TransactionLog.vue';
 </script>
 
 <template>
   <q-page>
-    <transaction-log />
+    <h1>index</h1>
   </q-page>
 </template>

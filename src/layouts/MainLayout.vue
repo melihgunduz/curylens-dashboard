@@ -2,6 +2,7 @@
 import HeaderComponent from 'components/HeaderComponent.vue';
 import { useQuasar } from 'quasar';
 import RightDrawer from 'components/RightDrawer.vue';
+import SearchAccount from 'components/SearchAccount.vue';
 
 
 const $q = useQuasar();
@@ -14,6 +15,7 @@ const $q = useQuasar();
     <HeaderComponent />
     <RightDrawer />
     <q-page-container>
+      <search-account />
       <router-view />
     </q-page-container>
   </q-layout>

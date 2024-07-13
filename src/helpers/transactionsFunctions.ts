@@ -13,10 +13,13 @@ export async function getTransactionHistory(address: PublicKey) {
   return await connection.getSignaturesForAddress(address);
 }
 
+export async function getAddressData(address: PublicKey) {
+  return await connection.getAccountInfo(address);
+}
+
 export async function getDetailedTransactions(address: PublicKey) {
   const transactionList = await getTransactionHistory(address);
   const signatureList = transactionList.map((transaction) => transaction.signature);
-  console.log('signatureList', signatureList);
   return await connection.getParsedTransactions(signatureList, { maxSupportedTransactionVersion: 0 });
 }
 
