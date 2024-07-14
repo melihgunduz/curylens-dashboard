@@ -5,9 +5,10 @@ import { onMounted, ref } from 'vue';
 import { TopCoinsType } from 'src/helpers/topCoinsType';
 import { useQuasar } from 'quasar';
 
-const coins = ref<TopCoinsType[]>([]);
-
 const $q = useQuasar();
+
+const coins = ref<TopCoinsType[]>([]);
+const dataLoading = ref(true);
 
 function getTopCoins() {
   coinListRequest().then(function(response) {
@@ -22,7 +23,9 @@ function getTopCoins() {
 
       });
       console.log('top coins component error message: ', error.message, 'error name: ', error.name);
-    });
+    }).finally(() => {
+    dataLoading.value = false;
+  });
 }
 
 function formatPrice(price: number) {
@@ -59,6 +62,9 @@ onMounted(() => {
         #{{ coin.rank }}
       </q-item-section>
     </q-item>
+    <q-inner-loading :showing="dataLoading">
+      <q-spinner-gears color="primary" size="50px" />
+    </q-inner-loading>
   </q-card>
 </template>
 

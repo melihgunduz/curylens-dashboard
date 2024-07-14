@@ -7,6 +7,7 @@ import { useOverviewStore } from 'stores/account-overview';
 import { AccountInfo, ParsedTransactionWithMeta, PublicKey } from '@solana/web3.js';
 import { getAddressData, getDetailedTransactions } from 'src/helpers/transactionsFunctions';
 import { useAppStore } from 'stores/app-store';
+import { formatUTCDate } from 'src/helpers/appFunctions';
 
 const address = ref('');
 
@@ -91,23 +92,6 @@ function calculateAge(blockTime: any) {
   }
 }
 
-function formatUTCDate(blockTime: any): string {
-  const blockTimeMillis = blockTime * 1000;
-  const date = new Date(blockTimeMillis);
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-    timeZone: 'UTC',
-    timeZoneName: 'short',
-  };
-  const formattedDate = date.toLocaleString('en-US', options).replace(',', '');
-  return formattedDate.replace(' UTC', ' UTC');
-}
 
 $router.beforeEach(() => {
   address.value = '';

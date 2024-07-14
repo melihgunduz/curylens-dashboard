@@ -37,21 +37,44 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-card class="marketDataCard shadow-0" style="height: fit-content">
-    <q-card-section>
-      <div>Bitcoin dominance: {{ marketData.btcDominance !== 0 ? marketData.btcDominance : 'Loading data...' }}%</div>
+  <q-card class="marketDataCard shadow-0" style="width: 254px">
+    <q-card-section class="justify-between" horizontal>
+      <q-card-section>
+        Bitcoin dominance
+      </q-card-section>
+      <q-card-section>
+        {{ marketData.btcDominance !== 0 ? marketData.btcDominance : 'Loading data...' }}%
+      </q-card-section>
     </q-card-section>
-    <q-card-section>
-      <div>Market cap:
+
+    <q-card-section class="justify-between" horizontal>
+      <q-card-section>
+        Market cap
+      </q-card-section>
+      <q-card-section>
         {{ marketData.marketCap !== 0 ? formatNumberWithUnits(marketData.marketCap) : 'Loading data...' }}
-      </div>
+      </q-card-section>
     </q-card-section>
-    <q-card-section>
-      <div>Volume: {{ marketData.volume !== 0 ? formatNumberWithUnits(marketData.volume) : 'Loading data...' }}</div>
+
+    <q-card-section class="justify-between" horizontal>
+      <q-card-section>
+        Volume
+      </q-card-section>
+      <q-card-section>
+        {{ marketData.volume !== 0 ? formatNumberWithUnits(marketData.volume) : 'Loading data...' }}
+      </q-card-section>
     </q-card-section>
-    <q-card-section>
-      <div>24h volume change: {{ marketData.volumeChange }}</div>
+
+    <q-card-section class="justify-between" horizontal>
+      <q-card-section>
+        24h volume change
+      </q-card-section>
+      <q-card-section>{{ marketData.volumeChange }}
+      </q-card-section>
     </q-card-section>
+    <q-inner-loading :showing="marketData.volume === 0">
+      <q-spinner-gears color="primary" size="50px" />
+    </q-inner-loading>
   </q-card>
 </template>
 

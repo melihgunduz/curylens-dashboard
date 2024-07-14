@@ -5,6 +5,7 @@ import { Supply } from '@solana/web3.js';
 import { connection } from 'src/helpers/transactionsFunctions';
 
 const supply = ref<Supply>();
+const dataLoading = ref(true);
 
 function formatNumberWithUnits(number: number) {
   const units = ['', 'K', 'M', 'B', 'T'];
@@ -18,14 +19,18 @@ function formatNumberWithUnits(number: number) {
 onMounted(() => {
   connection.getSupply().then((val) => {
     supply.value = val.value;
+  }).catch((e => {
+    console.error(e);
+  })).finally(() => {
+    dataLoading.value = false;
   });
 });
 
 </script>
 
 <template>
-  <div :class="[$q.screen.lt.md ? 'column q-my-md' : 'row justify-between']">
-    <q-card class="shadow-0">
+  <div :class="[$q.screen.lt.md ? 'column q-my-md ' : ' row justify-between']">
+    <q-card class="shadow-0 ">
       <q-card-section class="text-h6">
         <div>Circulating supply (SOL)</div>
       </q-card-section>
@@ -44,6 +49,9 @@ onMounted(() => {
         </em>
         <div class="q-ml-xs">is circulating</div>
       </q-card-section>
+      <q-inner-loading :showing="dataLoading">
+        <q-spinner-gears color="primary" size="50px" />
+      </q-inner-loading>
     </q-card>
     <q-card :class="$q.screen.lt.md ? 'q-mt-md shadow-0' : 'q-ml-md shadow-0'">
       <q-card-section class="text-h6">
@@ -57,6 +65,9 @@ onMounted(() => {
           Non circulating supply (SOL): {{ supply ? formatNumberWithUnits(supply?.nonCirculating / 1e9) : 0 }}
         </q-card-section>
       </div>
+      <q-inner-loading :showing="dataLoading">
+        <q-spinner-gears color="primary" size="50px" />
+      </q-inner-loading>
     </q-card>
   </div>
 </template>
