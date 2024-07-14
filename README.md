@@ -8,6 +8,7 @@ A wonderful place to track your devnet transactions on Solana.
 
 - [Overview](#overview)
 - [Features](#features)
+- [Future Ideas](#future-ideas)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -25,6 +26,10 @@ A wonderful place to track your devnet transactions on Solana.
 - Get top 10 coins on cryptocurrency market.
 - Get circulation status.
 - Get market status.
+
+## Future Ideas
+- Users could search for blocks or transactions directly.
+- Users can use devnet faucet for their Phantom wallets. 
 
 ## Getting Started
 
