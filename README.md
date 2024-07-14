@@ -2,42 +2,63 @@
 
 A wonderful place to track your devnet transactions on Solana.
 
-## Install the dependencies
+# Curylens - Dashboard & Explorer
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Run](#run)
+
+## Overview
+- Would you want to track your transactions? If yes you are in right place.
+
+## Features
+
+- Search for whole devnet accounts.
+- Get transaction history.
+- Get transaction details.
+- Learn recent news.
+- Get top 10 coins on cryptocurrency market.
+- Get circulation status.
+- Get market status.
+
+## Getting Started
+
+Follow the steps inside the project to set up the whole project locally.
+
+### Prerequisites
+
+1. Node.js: Ensure Node.js is installed. Download it from [nodejs.org](https://nodejs.org/).
+2. Web browser
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-yarn
-# or
-npm install
+
+  git clone https://github.com/melihgunduz/curylens-dashboard.git
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+2. Navigate to the project directory:
 
 ```bash
-quasar dev
+  cd curylens-dashboard
 ```
 
-### Lint the files
+3. Install required npm packages:
 
 ```bash
-yarn lint
-# or
-npm run lint
+ npm install
 ```
 
-### Format the files
-
+## Run
+To run app follow this code
 ```bash
-yarn format
-# or
-npm run format
+  quasar dev
 ```
 
-### Build the app for production
-
-```bash
-quasar build
-```
-
-### Customize the configuration
-
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
