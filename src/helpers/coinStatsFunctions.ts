@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { coinstats } from '../secrets/secrets.json';
+import * as process from 'process';
+// import { coinstats } from '../secrets/secrets.json';
+
+const coinstats = process.env.COIN_STATS;
 
 const generalGetOptions = {
   method: 'GET',
