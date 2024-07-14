@@ -93,7 +93,7 @@ $router.beforeEach(() => {
       :loading="appStore.getDataLoading" :on-clear="() => address = ''" bottom-slots clear-icon="mdi-close" clearable
       hide-bottom-space
       hide-hint
-      label="Search for accounts"
+      label="Search for accounts in Solana devnet"
       outlined
       @keyup.enter="searchAddress()"
     >

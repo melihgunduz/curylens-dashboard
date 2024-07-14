@@ -18,7 +18,7 @@ onMounted(async () => {
     <q-toolbar class="justify-between">
       <q-toolbar-title class="flex text-h4 items-baseline">
         Curylens
-        <div class="text-caption q-ml-sm">RPC v{{ rpcVersion?.['solana-core'] }}</div>
+        <div class="text-caption q-ml-sm">RPC v{{ rpcVersion?.['solana-core'] }} devnet</div>
       </q-toolbar-title>
       <q-btn-group flat>
         <q-btn dense flat icon="mdi-home" no-caps @click="$router.push({name:'Home'})" />
