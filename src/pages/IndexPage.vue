@@ -13,10 +13,6 @@ import NewsComponent from 'components/NewsComponent.vue';
 import TopCoins from 'components/TopCoins.vue';
 import SupplyStats from 'components/SupplyStats.vue';
 import NodeData from 'components/NodeData.vue';
-
-
-// TODO: inner loading could be add in to cards
-
 </script>
 <template>
   <q-page padding>

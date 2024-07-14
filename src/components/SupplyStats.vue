@@ -3,6 +3,9 @@
 import { onMounted, ref } from 'vue';
 import { Supply } from '@solana/web3.js';
 import { connection } from 'src/helpers/transactionsFunctions';
+import { useQuasar } from 'quasar';
+
+const $q = useQuasar();
 
 const supply = ref<Supply>();
 const dataLoading = ref(true);
@@ -19,8 +22,13 @@ function formatNumberWithUnits(number: number) {
 onMounted(() => {
   connection.getSupply().then((val) => {
     supply.value = val.value;
-  }).catch((e => {
-    console.error(e);
+  }).catch((() => {
+    $q.notify({
+      message: 'An error occurred when trying to fetch supply stats',
+      color: 'negative',
+      icon: 'mdi-alert-circle',
+      position: 'bottom',
+    });
   })).finally(() => {
     dataLoading.value = false;
   });
