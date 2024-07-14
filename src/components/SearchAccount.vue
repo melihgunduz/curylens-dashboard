@@ -50,6 +50,7 @@ function searchAddress() {
         appStore.setDataLoading(false);
         $router.push({ name: 'Account', params: { accountAddress: address.value } });
       }).catch(() => {
+        appStore.setDataLoading(false);
         $q.notify({
           message: 'An error occurred when trying to fetch detailed transactions',
           color: 'negative',
@@ -59,6 +60,7 @@ function searchAddress() {
       });
 
     } catch (e) {
+      appStore.setDataLoading(false);
       $q.notify({
         message: 'Invalid address',
         color: 'negative',
@@ -67,6 +69,7 @@ function searchAddress() {
       });
     }
   } else {
+    appStore.setDataLoading(false);
     $q.notify({
       message: 'Invalid address',
       color: 'negative',
