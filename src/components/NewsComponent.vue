@@ -14,7 +14,7 @@ onBeforeMount(async () => {
   await newsRequest().then(function(response) {
     news.value = response.data.result;
   })
-    .catch((error) => {
+    .catch(() => {
       $q.notify({
         message: 'An error occurred when trying to fetch news',
         color: 'negative',
@@ -22,7 +22,6 @@ onBeforeMount(async () => {
         position: 'bottom',
 
       });
-      console.log('news component error message: ', error.message, 'error name: ', error.name);
     });
 });
 

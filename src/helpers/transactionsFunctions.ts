@@ -9,8 +9,17 @@ export type SlotType = {
 export const connection = new Connection('https://devnet.helius-rpc.com/?api-key=ff4f4598-d6a2-44a1-b611-4d8bed205ed5', 'confirmed');
 
 
+export async function getRpcVersion() {
+  return await connection.getVersion();
+
+}
+
 export async function getTransactionHistory(address: PublicKey) {
   return await connection.getSignaturesForAddress(address);
+}
+
+export async function getTransactionDetails(signature: string) {
+  return await connection.getParsedTransaction(signature);
 }
 
 export async function getAddressData(address: PublicKey) {

@@ -39,7 +39,3 @@ yarn-error.log*
 
 # keys and secrets
 /src/secrets
-
-# unnecessary data
-/src/helpers/priceIds.json
-/src/helpers/priceFeedIds.json

@@ -1,13 +1,5 @@
 <script lang="ts" setup>
 
-// watch($useWallet.connected, () => {
-//   if ($useWallet.connected.value) {
-//     console.log($useWallet.publicKey.value?.toBase58());
-//   } else {
-//     console.log('user disconnected');
-//   }
-//
-// });
 import MarketStats from 'components/MarketStats.vue';
 import NewsComponent from 'components/NewsComponent.vue';
 import TopCoins from 'components/TopCoins.vue';
@@ -16,6 +8,7 @@ import NodeData from 'components/NodeData.vue';
 </script>
 <template>
   <q-page padding>
+    <h3 class="text-center q-mt-none">Welcome to smart solana account explorer</h3>
     <div
       :class="[$q.screen.gt.sm ? 'row justify-around' : 'column items-center justify-around']"
       :style="[$q.screen.gt.sm ? 'height: 480px' : '']"

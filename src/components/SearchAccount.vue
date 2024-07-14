@@ -7,7 +7,7 @@ import { useOverviewStore } from 'stores/account-overview';
 import { AccountInfo, ParsedTransactionWithMeta, PublicKey } from '@solana/web3.js';
 import { getAddressData, getDetailedTransactions } from 'src/helpers/transactionsFunctions';
 import { useAppStore } from 'stores/app-store';
-import { formatUTCDate } from 'src/helpers/appFunctions';
+import { calculateAge, formatUTCDate } from 'src/helpers/appFunctions';
 
 const address = ref('');
 
@@ -38,7 +38,7 @@ function searchAddress() {
         transactionHistoryParsed.value = res;
         transactionHistoryParsed.value.forEach((tx) => {
           rows.value.push({
-            transactionSignature: tx?.transaction.signatures[0].slice(0, 6) + '...',
+            transactionSignature: tx?.transaction.signatures[0],
             block: tx?.slot,
             age: calculateAge(tx?.blockTime),
             timestamp: formatUTCDate(tx?.blockTime),
@@ -49,8 +49,13 @@ function searchAddress() {
         overviewStore.setAccountInfo(accountInfo.value);
         appStore.setDataLoading(false);
         $router.push({ name: 'Account', params: { accountAddress: address.value } });
-      }).catch((err) => {
-        console.log(err);
+      }).catch(() => {
+        $q.notify({
+          message: 'An error occurred when trying to fetch detailed transactions',
+          color: 'negative',
+          icon: 'mdi-alert-circle',
+          position: 'bottom',
+        });
       });
 
     } catch (e) {
@@ -68,27 +73,6 @@ function searchAddress() {
       icon: 'mdi-alert-circle',
       position: 'bottom',
     });
-  }
-}
-
-
-function calculateAge(blockTime: any) {
-  const blockTimeMillis = blockTime * 1000;
-  const currentTimeMillis = Date.now();
-  const ageMillis = currentTimeMillis - blockTimeMillis;
-  const seconds = Math.floor(ageMillis / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (days > 0) {
-    return `${days} days ago`;
-  } else if (hours > 0) {
-    return `${hours} hours ago`;
-  } else if (minutes > 0) {
-    return `${minutes} minutes ago`;
-  } else {
-    return `${seconds} seconds ago`;
   }
 }
 

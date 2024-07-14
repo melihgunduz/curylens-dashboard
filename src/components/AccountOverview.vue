@@ -2,16 +2,20 @@
 
 import { onMounted, ref } from 'vue';
 import { AccountInfo } from '@solana/web3.js';
-import { QTableColumn } from 'quasar';
+import { QTableColumn, useQuasar } from 'quasar';
 import { useOverviewStore } from 'stores/account-overview';
 import { useRouter } from 'vue-router';
+import { getTransactionDetails } from 'src/helpers/transactionsFunctions';
+
+
+const $router = useRouter();
+const $q = useQuasar();
 
 const overviewStore = useOverviewStore();
 
 
 const accountInfo = ref<AccountInfo<Buffer> | null>(null);
 const rows: any = ref([]);
-const $router = useRouter();
 
 const columns: QTableColumn[] = [
   { name: 'transactionSignature', align: 'left', label: 'Transaction Signature', field: 'transactionSignature' },
@@ -31,6 +35,21 @@ onMounted(() => {
   accountInfo.value = overviewStore.getAccountInfo;
   rows.value = overviewStore.getTableRows;
 });
+
+function goDetails(evt: Event, row: any) {
+  getTransactionDetails(row.transactionSignature).then((response) => {
+    overviewStore.setTransactionInfo(response);
+  }).catch(() => {
+    $q.notify({
+      message: 'An error occurred when transaction detail fetching',
+      color: 'negative',
+      icon: 'mdi-alert-circle',
+      position: 'bottom',
+    });
+  }).finally(() => {
+    $router.push({ name: 'Transaction', params: { txHash: row.transactionSignature } });
+  });
+}
 
 
 </script>
@@ -67,6 +86,7 @@ onMounted(() => {
       :rows="rows"
       :rows-per-page-options="[5, 10, 20, 50]"
       row-key="transactionSignature"
+      @rowClick="(evt, row) => goDetails(evt,row)"
     >
       <template v-slot:body-cell-result="props">
         <q-td :props="props">

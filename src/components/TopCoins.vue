@@ -14,7 +14,7 @@ function getTopCoins() {
   coinListRequest().then(function(response) {
     coins.value = response.data.result;
   })
-    .catch(function(error) {
+    .catch(() => {
       $q.notify({
         message: 'An error occurred when trying to fetch top coins',
         color: 'negative',
@@ -22,7 +22,6 @@ function getTopCoins() {
         position: 'bottom',
 
       });
-      console.log('top coins component error message: ', error.message, 'error name: ', error.name);
     }).finally(() => {
     dataLoading.value = false;
   });

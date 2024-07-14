@@ -8,6 +8,9 @@ const routes: RouteRecordRaw[] = [
       { name: 'Home', path: '', component: () => import('pages/IndexPage.vue') },
       {
         name: 'Account', path: '/account/:accountAddress', component: () => import('pages/AccountPage.vue'),
+      },
+      {
+        name: 'Transaction', path: '/tx/:txHash', component: () => import('pages/TransactionPage.vue'),
       }],
 
   },

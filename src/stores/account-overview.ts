@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import { AccountInfo } from '@solana/web3.js';
+import { AccountInfo, ParsedTransactionWithMeta } from '@solana/web3.js';
 
 type TableRows = {
   transactionSignature: string,
@@ -27,6 +27,21 @@ export const useOverviewStore = defineStore('overviewStore', () => {
     accountInfo.value = account;
   }
 
+  const transactionInfo = ref<ParsedTransactionWithMeta | null>();
+  const getTransactionInfo = computed(() => transactionInfo.value ? transactionInfo.value : null);
 
-  return { tableRows, getTableRows, getAccountInfo, setTableRows, setAccountInfo };
+  function setTransactionInfo(info: ParsedTransactionWithMeta | null) {
+    transactionInfo.value = info;
+  }
+
+
+  return {
+    tableRows,
+    getTableRows,
+    getAccountInfo,
+    getTransactionInfo,
+    setTableRows,
+    setAccountInfo,
+    setTransactionInfo,
+  };
 });

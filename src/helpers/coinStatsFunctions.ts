@@ -19,22 +19,6 @@ export function coinListRequest() {
 
 }
 
-export function coinChartRequest(coinName: string, period: string) {
-
-  const options = {
-    ...generalGetOptions,
-    url: `https://openapiv1.coinstats.app/coins/${coinName}/charts?period=${period}`,
-  };
-
-  axios
-    .request(options)
-    .then(function(response) {
-      console.log(response.data);
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
-}
 
 export function marketValuesRequest() {
   const options = {
