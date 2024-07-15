@@ -4,6 +4,8 @@ A wonderful place to track your devnet transactions on Solana.
 
 # Curylens - Dashboard & Explorer
 
+Youtube link: https://youtu.be/w4j6LkKks2w?si=mJ0-QN9YaXxvmI-6
+
 ## Table of Contents
 
 - [Overview](#overview)
